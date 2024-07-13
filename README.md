@@ -1,2 +1,14 @@
 # Data Structure and Algorithms in Rust
-This is a repository that contains data structure and algorithms written in rust programming language. Hope this makes me a better developer haha.
+Welcome to my Data Structures and Algorithms repository, where I've implemented various algorithms in the Rust programming language. This repository is a part of my journey to become a better developer, and I hope it can be helpful for others as well.
+
+## Introduction
+This repository contains implementations of common data structures and algorithms in Rust. Each algorithm is implemented in a straightforward manner, with a focus on readability and understanding the core concepts.
+
+## Implementation
+Below are the data structure and algorithms which are currently implemented and this will continue on daily basis(that my plan).
+### `Sorting Algorithms`:
+- **Bubble Sort**
+- **Selection Sort**
+- **Insertion Sort**
+
+## `To be Continued`
