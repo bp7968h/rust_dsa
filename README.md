@@ -10,5 +10,6 @@ Below are the data structure and algorithms which are currently implemented and 
 - **Bubble Sort**
 - **Selection Sort**
 - **Insertion Sort**
+- **Quick Sort**
 
 ## `To be Continued`

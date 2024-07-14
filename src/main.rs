@@ -1,4 +1,4 @@
-use rust_dsa::sorting::{bubble_sort, selection_sort, insertion_sort};
+use rust_dsa::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort};
 
 fn main() {
     let mut bubble_array = vec![4, 2, 5, 1, 3];
@@ -12,5 +12,10 @@ fn main() {
     let mut insertion_array = vec![4, 2, 5, 1, 3];
     insertion_sort(&mut insertion_array);
     println!("Insertion sorted: {:?}", insertion_array);
+
+    let mut quick_array = vec![4, 2, 5, 1, 3];
+    let len = quick_array.len();
+    quick_sort(&mut quick_array, 0, (len -1) as isize);
+    println!("Quick sorted: {:?}", quick_array);
 
 }
