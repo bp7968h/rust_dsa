@@ -2,7 +2,7 @@ pub mod sorting;
 
 #[cfg(test)]
 mod tests{
-    use crate::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort};
+    use crate::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort, counting_sort};
 
     #[test]
     fn test_bubble_sort() {
@@ -31,5 +31,12 @@ mod tests{
         let len = array.len();
         quick_sort(&mut array, 0, (len - 1) as isize);
         assert_eq!(array, vec![1, 2, 3, 4, 5]);
+    }
+
+    #[test]
+    fn test_counting_sort() {
+        let mut array = vec![4, 2, 5, 2, 1, 1, 0, 3];
+        counting_sort(&mut array);
+        assert_eq!(array, vec![0, 1, 1, 2, 2, 3, 4, 5]);
     }
 }

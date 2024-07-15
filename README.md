@@ -11,5 +11,6 @@ Below are the data structure and algorithms which are currently implemented and 
 - **Selection Sort**
 - **Insertion Sort**
 - **Quick Sort**
+- **Counting Sort**
 
 ## `To be Continued`
