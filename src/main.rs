@@ -1,5 +1,5 @@
 use rust_dsa::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort, counting_sort, radix_sort, merge_sort};
-use rust_dsa::searching::{linear_search};
+use rust_dsa::searching::{linear_search, binary_search};
 
 fn main() {
     let mut bubble_array = vec![4, 2, 5, 1, 3];
@@ -33,9 +33,18 @@ fn main() {
 
     let linear_search_array = vec![4, 2, 5, 1, 3];
     let find = 1;
-    if let Some(index) = linear_search(&linear_search_array, 1){
+    if let Some(index) = linear_search(&linear_search_array, find){
         println!("Found {} at index {}", find, index);
     }else{
+        println!("Value {} not found in {:?}", find, linear_search_array);
+    };
+
+    let mut binary_search_array = vec![4, 2, 5, 1, 3];
+    merge_sort(&mut binary_search_array);
+    let find = 1;
+    if let Some(index) = binary_search(&binary_search_array, find){
+        println!("Found {} at index {}", find, index);
+    }else {
         println!("Value {} not found in {:?}", find, linear_search_array);
     };
 

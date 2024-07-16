@@ -17,5 +17,6 @@ Below are the data structure and algorithms which are currently implemented and 
 
 ### `Searching Algorithms`:
 - **Linear Search**
+- **Binary Search**
 
 ## `To be Continued`
