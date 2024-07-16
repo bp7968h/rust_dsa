@@ -2,7 +2,7 @@ pub mod sorting;
 
 #[cfg(test)]
 mod tests{
-    use crate::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort, counting_sort, radix_sort};
+    use crate::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort, counting_sort, radix_sort, merge_sort};
 
     #[test]
     fn test_bubble_sort() {
@@ -44,6 +44,13 @@ mod tests{
     fn test_radix_sort(){
         let mut array = vec![170, 45, 75, 90, 802, 24, 2, 66];
         radix_sort(&mut array);
+        assert_eq!(array, vec![2, 24, 45, 66, 75, 90, 170, 802]);
+    }
+
+    #[test]
+    fn test_merge_sort(){
+        let mut array = vec![170, 45, 75, 90, 802, 24, 2, 66];
+        merge_sort(&mut array);
         assert_eq!(array, vec![2, 24, 45, 66, 75, 90, 170, 802]);
     }
 }

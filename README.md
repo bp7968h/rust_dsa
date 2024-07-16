@@ -13,5 +13,6 @@ Below are the data structure and algorithms which are currently implemented and 
 - **Quick Sort**
 - **Counting Sort**
 - **Radix Sort**
+- **Merge Sort**
 
 ## `To be Continued`

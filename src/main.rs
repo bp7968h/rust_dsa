@@ -1,4 +1,4 @@
-use rust_dsa::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort, counting_sort, radix_sort};
+use rust_dsa::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort, counting_sort, radix_sort, merge_sort};
 
 fn main() {
     let mut bubble_array = vec![4, 2, 5, 1, 3];
@@ -22,8 +22,12 @@ fn main() {
     counting_sort(&mut counting_array);
     println!("Counting sorted: {:?}", counting_array);
 
-    let mut radix_array = vec![ 33, 45, 40, 25, 17, 24];
+    let mut radix_array = vec![ 33, 45, 105, 40, 25, 17, 24, 5];
     radix_sort(&mut radix_array);
     println!("Radix sorted: {:?}", radix_array);
+
+    let mut merge_array = vec![4, 2, 5, 1, 3];
+    merge_sort(&mut merge_array);
+    println!("Merge sorted: {:?}", merge_array);
 
 }
