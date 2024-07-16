@@ -15,4 +15,7 @@ Below are the data structure and algorithms which are currently implemented and 
 - **Radix Sort**
 - **Merge Sort**
 
+### `Searching Algorithms`:
+- **Linear Search**
+
 ## `To be Continued`
