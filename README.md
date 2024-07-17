@@ -1,5 +1,5 @@
 # Data Structure and Algorithms in Rust
-Welcome to my Data Structures and Algorithms repository, where I've implemented various algorithms in the Rust programming language. This repository is a part of my journey to become a better developer, and I hope it can be helpful for others as well.
+Welcome to my Data Structures and Algorithms repository, where I've implemented various data structures and algorithms in the Rust programming language. This repository is a part of my journey to become a better developer, and I hope it can be helpful for others as well.
 
 ## Introduction
 This repository contains implementations of common data structures and algorithms in Rust. Each algorithm is implemented in a straightforward manner, with a focus on readability and understanding the core concepts.
