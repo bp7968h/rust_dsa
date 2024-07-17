@@ -1,5 +1,6 @@
 use rust_dsa::sorting::{bubble_sort, selection_sort, insertion_sort, quick_sort, counting_sort, radix_sort, merge_sort};
 use rust_dsa::searching::{linear_search, binary_search};
+use rust_dsa::data_structure::{LinkedList};
 
 fn main() {
     let mut bubble_array = vec![4, 2, 5, 1, 3];
@@ -48,4 +49,8 @@ fn main() {
         println!("Value {} not found in {:?}", find, linear_search_array);
     };
 
+    let mut list = LinkedList::new(1);
+    list.add(2);
+    list.add(3);
+    println!("LinkedList Structure: {}", list);
 }

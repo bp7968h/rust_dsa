@@ -1,5 +1,6 @@
 pub mod sorting;
 pub mod searching;
+pub mod data_structure;
 
 
 
@@ -80,5 +81,47 @@ mod tests{
         let non_exisiting_result = binary_search(&array, non_existing_value);
         assert_eq!(exisiting_result, Some(0));
         assert_eq!(non_exisiting_result, None);
+    }
+
+    use crate::data_structure::{LinkedList};
+
+    #[test]
+    fn linked_list_test_add() {
+        let mut list = LinkedList::new(1);
+        list.add(2);
+        list.add(3);
+
+        let mut iter = list.iter();
+        assert_eq!(iter.next(), Some(&1));
+        assert_eq!(iter.next(), Some(&2));
+        assert_eq!(iter.next(), Some(&3));
+        assert_eq!(iter.next(), None);
+    }
+
+    #[test]
+    fn linked_list_test_add_single() {
+        let mut list = LinkedList::new(10);
+        list.add(20);
+
+        let mut iter = list.iter();
+        assert_eq!(iter.next(), Some(&10));
+        assert_eq!(iter.next(), Some(&20));
+        assert_eq!(iter.next(), None);
+    }
+
+    #[test]
+    fn linked_list_test_add_multiple() {
+        let mut list = LinkedList::new(1);
+        for i in 2..=5 {
+            list.add(i);
+        }
+
+        let mut iter = list.iter();
+        assert_eq!(iter.next(), Some(&1));
+        assert_eq!(iter.next(), Some(&2));
+        assert_eq!(iter.next(), Some(&3));
+        assert_eq!(iter.next(), Some(&4));
+        assert_eq!(iter.next(), Some(&5));
+        assert_eq!(iter.next(), None);
     }
 }

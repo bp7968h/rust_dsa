@@ -19,4 +19,7 @@ Below are the data structure and algorithms which are currently implemented and 
 - **Linear Search**
 - **Binary Search**
 
+### `Data Structure`:
+- **Singly Linked List**
+
 ## `To be Continued`
