@@ -83,7 +83,7 @@ mod tests{
         assert_eq!(non_exisiting_result, None);
     }
 
-    use crate::data_structure::{LinkedList};
+    use crate::data_structure::{LinkedList, Stack};
 
     #[test]
     fn linked_list_test_add() {
@@ -123,5 +123,22 @@ mod tests{
         assert_eq!(iter.next(), Some(&4));
         assert_eq!(iter.next(), Some(&5));
         assert_eq!(iter.next(), None);
+    }
+
+    #[test]
+    fn stack_test() {
+        let mut stack: Stack<i32> = Stack::new();
+
+        assert!(stack.is_empty());
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        assert_eq!(stack.peek(), Some(&3));
+        assert_eq!(stack.pop(), Some(3));
+        assert_eq!(stack.pop(), Some(2));
+        assert_eq!(stack.pop(), Some(1));
+        assert!(stack.is_empty());
     }
 }
