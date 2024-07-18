@@ -21,5 +21,6 @@ Below are the data structure and algorithms which are currently implemented and 
 
 ### `Data Structure`:
 - **Singly Linked List**
+- **Stack**
 
 ## `To be Continued`
