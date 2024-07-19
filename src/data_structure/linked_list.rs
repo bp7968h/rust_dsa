@@ -14,6 +14,12 @@ impl<T: Ord> LinkedList<T> {
         }
     }
 
+    pub fn iter(&self) -> LinkedListIter<'_, T> {
+        LinkedListIter {
+            current: Some(self),
+        }
+    }
+
     pub fn add(&mut self, value: T) {
         let mut current = self;
         while let Some(ref mut next) = current.pointer {
@@ -22,10 +28,15 @@ impl<T: Ord> LinkedList<T> {
         current.pointer = Some(Box::new(LinkedList::new(value)));
     }
 
-    pub fn iter(&self) -> LinkedListIter<'_, T> {
-        LinkedListIter {
-            current: Some(self),
+    pub fn find(&self, value: T) -> Option<&LinkedList<T>> {
+        let mut current = Some(self);
+        while let Some(ref node) = current {
+            if node.data == value {
+                return Some(node);
+            }
+            current = node.pointer.as_deref();
         }
+        None
     }
 }
 

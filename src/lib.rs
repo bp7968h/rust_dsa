@@ -126,6 +126,25 @@ mod tests{
     }
 
     #[test]
+    fn test_find_method_various_scenarios() {
+        let mut list = LinkedList::new(1);
+        list.add(2);
+        list.add(3);
+
+        // Find head
+        assert_eq!(list.find(1).unwrap().data, 1, "Failed to find the head element.");
+
+        // Find middle
+        assert_eq!(list.find(2).unwrap().data, 2, "Failed to find the middle element.");
+
+        // Find tail
+        assert_eq!(list.find(3).unwrap().data, 3, "Failed to find the tail element.");
+
+        //Trying to find a non-existent element
+        assert!(list.find(4).is_none(), "Non-existent element was supposedly found.");
+    }
+
+    #[test]
     fn stack_test() {
         let mut stack: Stack<i32> = Stack::new();
 
