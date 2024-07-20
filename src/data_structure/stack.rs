@@ -24,3 +24,25 @@ impl<T: Ord> Stack<T>{
     }
 
 }
+
+#[cfg(test)]
+mod tests{
+    use super::*;
+
+    #[test]
+    fn stack_test() {
+        let mut stack: Stack<i32> = Stack::new();
+
+        assert!(stack.is_empty());
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        assert_eq!(stack.peek(), Some(&3));
+        assert_eq!(stack.pop(), Some(3));
+        assert_eq!(stack.pop(), Some(2));
+        assert_eq!(stack.pop(), Some(1));
+        assert!(stack.is_empty());
+    }
+}
