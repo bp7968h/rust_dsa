@@ -9,3 +9,15 @@ pub fn insertion_sort<T: Ord + std::fmt::Debug >(arr: &mut [T]){
     }
 
 }
+
+#[cfg(test)]
+mod tests{
+    use super::*;
+
+    #[test]
+    fn test_insertion_sort() {
+        let mut array = vec![4, 2, 5, 1, 3];
+        insertion_sort(&mut array);
+        assert_eq!(array, vec![1, 2, 3, 4, 5]);
+    }
+}

@@ -38,3 +38,15 @@ fn merge<T: Ord + Copy>(a: &[T], b: &[T], ret: &mut [T]){
         ret[index..].copy_from_slice(&b[right..]);
     }
 }
+
+#[cfg(test)]
+mod tests{
+    use super::*;
+
+    #[test]
+    fn test_merge_sort(){
+        let mut array = vec![170, 45, 75, 90, 802, 24, 2, 66];
+        merge_sort(&mut array);
+        assert_eq!(array, vec![2, 24, 45, 66, 75, 90, 170, 802]);
+    }
+}

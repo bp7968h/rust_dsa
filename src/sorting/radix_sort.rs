@@ -40,3 +40,15 @@ fn counting_sort_by_digit(arr: &mut [usize], digit_place: usize) {
         arr[i] = output[i];
     }
 }
+
+#[cfg(test)]
+mod tests{
+    use super::*;
+
+    #[test]
+    fn test_radix_sort(){
+        let mut array = vec![170, 45, 75, 90, 802, 24, 2, 66];
+        radix_sort(&mut array);
+        assert_eq!(array, vec![2, 24, 45, 66, 75, 90, 170, 802]);
+    }
+}

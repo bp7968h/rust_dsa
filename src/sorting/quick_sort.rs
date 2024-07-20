@@ -39,3 +39,16 @@ fn parition<T: Ord + std::marker::Copy>(arr: &mut [T], start: isize, end: isize)
         arr.swap(i as usize, j as usize);
     }
 }
+
+#[cfg(test)]
+mod tests{
+    use super::*;
+
+    #[test]
+    fn test_quick_sort() {
+        let mut array = vec![4, 2, 5, 1, 3];
+        let len = array.len();
+        quick_sort(&mut array, 0, (len - 1) as isize);
+        assert_eq!(array, vec![1, 2, 3, 4, 5]);
+    }
+}

@@ -12,3 +12,15 @@ pub fn selection_sort<T: Ord>(arr: &mut [T]){
         }
     }
 }
+
+#[cfg(test)]
+mod tests{
+    use super::*;
+
+    #[test]
+    fn test_selection_sort() {
+        let mut array = vec![4, 2, 5, 1, 3];
+        selection_sort(&mut array);
+        assert_eq!(array, vec![1, 2, 3, 4, 5]);
+    }
+}
