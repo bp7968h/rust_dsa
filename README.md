@@ -21,7 +21,8 @@ Below are the data structure and algorithms which are currently implemented and 
 
 ### `Data Structure`:
 - **Singly Linked List**
-- **Stack Contiguous Memory**
-- **Stack Non-Contiguous Memory**
+- **Stack (Contiguous Memory)**
+- **Stack (Non-Contiguous Memory)**
+- **Queue**
 
 ## `To be Continued`
