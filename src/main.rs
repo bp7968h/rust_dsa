@@ -53,4 +53,6 @@ fn main() {
     list.add(2);
     list.add(3);
     println!("LinkedList Structure: {}", list);
+
+
 }
