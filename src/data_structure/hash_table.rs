@@ -4,6 +4,7 @@ use std::hash::{Hash, Hasher};
 type Key = String;
 type Value = String;
 
+#[derive(Debug, Clone)]
 struct Node {
     key: Key,
     value: Value,

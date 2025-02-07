@@ -2,7 +2,8 @@ pub mod linked_list;
 pub mod stack;
 pub mod stack_nconti;
 pub mod queue;
-mod hash_table;
+pub mod hash_table;
+pub mod b_tree;
 
 pub use linked_list::LinkedList;
 pub use stack::Stack;
