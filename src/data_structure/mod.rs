@@ -4,6 +4,7 @@ pub mod stack_nconti;
 pub mod queue;
 pub mod hash_table;
 pub mod b_tree;
+pub mod trie;
 
 pub use linked_list::LinkedList;
 pub use stack::Stack;
