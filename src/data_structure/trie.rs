@@ -27,15 +27,21 @@ impl Trie {
         }
     }
 
-    fn char_to_index(c: char) -> usize {
-        (c as usize) - ('a' as usize)
+    fn char_to_index(c: char) -> Option<usize> {
+        let lowercase_c = c.to_ascii_lowercase();
+        if lowercase_c.is_ascii_alphabetic() {
+            Some((lowercase_c as usize) - ('a' as usize))
+        } else {
+            None
+        }
     }
 
     fn insert(&mut self, word: &str) {
         let mut node = &mut self.root;
         for c in word.chars() {
-            let index = Trie::char_to_index(c);
-            node = node.children[index].get_or_insert_with(|| Box::new(TrieNode::new()));
+            if let Some(index) = Trie::char_to_index(c) {
+                node = node.children[index].get_or_insert_with(|| Box::new(TrieNode::new()));
+            }
         }
         node.is_end_of_word = true;
     }
@@ -43,10 +49,13 @@ impl Trie {
     fn search(&self, word: &str) -> bool {
         let mut node = &self.root;
         for c in word.chars() {
-            let index = Trie::char_to_index(c);
-            match &node.children[index] {
-                Some(child) => node = child,
-                None => return false,
+            if let Some(index) = Trie::char_to_index(c) {
+                match &node.children[index] {
+                    Some(child) => node = child,
+                    None => return false,
+                }
+            } else {
+                return false;
             }
         }
         node.is_end_of_word
@@ -55,16 +64,19 @@ impl Trie {
     fn get(&self, word: &str) -> Option<Vec<String>> {
         let mut node = &self.root;
         for c in word.chars() {
-            let index = Trie::char_to_index(c);
-            match &node.children[index] {
-                Some(child) => node = child,
-                None => return None,
+            if let Some(index) = Trie::char_to_index(c) {
+                match &node.children[index] {
+                    Some(child) => node = child,
+                    None => return None,
+                }
+            } else {
+                return None;
             }
         }
         
         let mut words: Vec<String> = Vec::new();
         let mut stack: Vec<(&TrieNode, String)> = Vec::new();
-        stack.push((node, word.to_string()));
+        stack.push((node, word.to_ascii_lowercase()));
         
         while let Some((n, curr_str)) = stack.pop() {
             if n.is_end_of_word {
@@ -165,5 +177,42 @@ mod tests {
         trie.insert("test");
 
         assert!(trie.search("test"));
+    }
+
+    #[test]
+    fn insert_and_search_case_insensitive() {
+        let mut trie = Trie::new();
+        trie.insert("Hello");
+
+        assert!(trie.search("hello")); // Should return true
+        assert!(trie.search("HELLO")); // Should return true
+        assert!(trie.search("HeLLo")); // Should return true
+        assert!(!trie.search("Helloo")); // Should return false
+    }
+
+    #[test]
+    fn get_with_case_insensitivity() {
+        let mut trie = Trie::new();
+        trie.insert("App");
+        trie.insert("Apple");
+        trie.insert("Application");
+
+        let words = trie.get("APP").unwrap();
+        let mut expected_words = vec!["app".to_string(), "apple".to_string(), "application".to_string()];
+        expected_words.sort();
+        let mut retrieved_words = words.clone();
+        retrieved_words.sort();
+
+        assert_eq!(retrieved_words, expected_words);
+    }
+
+    #[test]
+    fn insert_with_mixed_case() {
+        let mut trie = Trie::new();
+        trie.insert("TeSt");
+
+        assert!(trie.search("test")); // Should return true
+        assert!(trie.search("TEST")); // Should return true
+        assert!(trie.search("TeSt")); // Should return true
     }
 }
