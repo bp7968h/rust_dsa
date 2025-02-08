@@ -1,5 +1,5 @@
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, PartialEq)]
 struct TrieNode {
     children: [Option<Box<TrieNode>>; 26],
     is_end_of_word: bool,
@@ -52,12 +52,6 @@ impl Trie {
         node.is_end_of_word
     }
     
-    //#[derive(Default, Debug)]
-    //struct TrieNode {
-    //    children: [Option<Box<TrieNode>>; 26],
-    //    is_end_of_word: bool,
-    //}
-    
     fn get(&self, word: &str) -> Option<Vec<String>> {
         let mut node = &self.root;
         for c in word.chars() {
@@ -86,5 +80,90 @@ impl Trie {
             }
         }
         Some(words)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+
+    #[test]
+    fn init_trienode() {
+        let tnode = TrieNode::new();
+        assert_eq!(tnode, TrieNode {
+            children: [const{None}; 26],
+            is_end_of_word: false,
+        });
+    }
+
+    #[test]
+    fn init_trie() {
+        let trie = Trie::new();
+        assert_eq!(trie.root, TrieNode::new());
+    }
+
+    #[test]
+    fn insert_and_search_single_word() {
+        let mut trie = Trie::new();
+        trie.insert("hello");
+
+        assert!(trie.search("hello")); // Should return true
+        assert!(!trie.search("hell")); // Should return false
+        assert!(!trie.search("world")); // Should return false
+    }
+
+    #[test]
+    fn insert_and_search_multiple_words() {
+        let mut trie = Trie::new();
+        trie.insert("apple");
+        trie.insert("app");
+        trie.insert("apex");
+
+        assert!(trie.search("apple"));
+        assert!(trie.search("app"));
+        assert!(trie.search("apex"));
+
+        assert!(!trie.search("apples"));
+        assert!(!trie.search("ape"));
+    }
+
+    #[test]
+    fn search_empty_trie() {
+        let trie = Trie::new();
+        assert!(!trie.search("test"));
+    }
+
+    #[test]
+    fn get_words_with_prefix() {
+        let mut trie = Trie::new();
+        trie.insert("apple");
+        trie.insert("app");
+        trie.insert("application");
+        trie.insert("apply");
+        trie.insert("apt");
+
+        let words = trie.get("app").unwrap();
+        let mut expected_words = vec!["app".to_string(), "apple".to_string(), "application".to_string(), "apply".to_string()];
+        expected_words.sort();
+        let mut retrieved_words = words.clone();
+        retrieved_words.sort();
+
+        assert_eq!(retrieved_words, expected_words);
+
+        let words2 = trie.get("apt").unwrap();
+        assert_eq!(words2, vec!["apt".to_string()]);
+
+        let words3 = trie.get("xyz");
+        assert!(words3.is_none());
+    }
+
+    #[test]
+    fn insert_duplicate_words() {
+        let mut trie = Trie::new();
+        trie.insert("test");
+        trie.insert("test");
+
+        assert!(trie.search("test"));
     }
 }
