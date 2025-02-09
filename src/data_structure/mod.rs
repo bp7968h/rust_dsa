@@ -5,6 +5,7 @@ pub mod queue;
 pub mod hash_table;
 pub mod b_tree;
 pub mod trie;
+pub mod r_tree;
 
 pub use linked_list::LinkedList;
 pub use stack::Stack;
